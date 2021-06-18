@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PokemonsService } from 'src/app/services/pokemons.service';
 
 @Component({
   selector: 'app-pokemon-details',
@@ -6,10 +7,14 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./pokemon-details.component.css']
 })
 export class PokemonDetailsComponent implements OnInit {
+  pokemon: any;
+  constructor(private pokemonsService: PokemonsService) {
 
-  constructor() { }
+  }
 
-  ngOnInit(): void {
+  async ngOnInit() {
+
+    this.pokemon = await this.pokemonsService.getOnePokemon("bulbasaur");
   }
 
 }
